@@ -1,0 +1,103 @@
+// .fishbone-container {
+//     width: 100%;
+//     display: inline-grid;
+//     grid-template-rows: auto 0.2rem auto;
+//     --bone-color: #85a0b2;
+//     --yellow: #fdbe22;
+//     --green: #69e982;
+//     --blue: #5cb2fb;
+
+//     .cause {
+//         display: flex;
+//         flex-direction: column;
+//         transform: skew(20deg);
+//         transform-origin: bottom;
+//         margin-left: 0.8rem;
+//     }
+
+//     .rootcause {
+//         width: 90%;
+//         text-align: center;
+//         position: relative;
+//         left: 100%;
+//         transform: translateX(-50%) skewX(-20deg);
+//         // font-size: 1.25rem;
+//         color: #fff;
+//         padding: 0.2em;
+//         border-radius: 0.2rem;
+
+//         &.yellow {
+//             background-color: var(--yellow);
+//         }
+
+//         &.green {
+//             background-color: var(--green);
+//         }
+
+//         &.blue {
+//             background-color: var(--blue);
+//         }
+//     }
+
+//     .subcause {
+//         flex-grow: 1;
+//         border-right: 0.2rem solid var(--bone-color);
+//         padding-bottom: 0.75rem;
+//         padding-top: 0.75rem;
+//     }
+
+//     .stat {
+//         text-align: right;
+//         padding-right: 3rem;
+//         position: relative;
+//         transform: skewX(-20deg);
+//         line-height: 1.5rem;
+//         // font-size: 1em;
+//     }
+
+//     .stat:before {
+//         content: "";
+//         display: block;
+//         background-color: var(--bone-color);
+//         position: absolute;
+//         width: 3rem;
+//         height: 0.2rem;
+//         right: 0;
+//         top: 50%;
+//         transform: translate(0.2rem, -50%);
+//     }
+
+//     .line {
+//         grid-row: 2;
+//         background-color: var(--bone-color);
+
+//         ~ .cause {
+//             transform: skewX(-20deg);
+//             transform-origin: top;
+//         }
+
+//         ~ .cause .rootcause {
+//             transform: translateX(-50%) skewX(20deg);
+//         }
+
+//         ~ .cause .stat {
+//             transform: skewX(20deg);
+//         }
+//     }
+
+//     .defect {
+//         grid-row: 2;
+//     }
+
+//     .defect-text {
+//         position: relative;
+//         top: 50%;
+//         transform: translateY(-50%);
+//         padding: 1rem;
+//         // margin-left: .5rem;
+//         background-color: var(--bone-color);
+//         border-radius: 0.5rem;
+//         color: #fff;
+//         text-align: center;
+//     }
+// }

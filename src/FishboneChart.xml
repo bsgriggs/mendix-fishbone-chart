@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="mendix.fishbonechart.FishboneChart" pluginWidget="true" needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Fishbone Chart</name>
+    <description>My widget description</description>
+    <icon />
+    <properties>
+        <propertyGroup caption="General">
+            <propertyGroup caption="Data">
+                <property key="defect" type="textTemplate" required="true">
+                    <caption>Defect</caption>
+                    <description></description>
+                </property>
+                <property key="causes" type="datasource" isList="true" required="true">
+                    <caption>Causes</caption>
+                    <description></description>
+                </property>
+                <property key="rootCause" type="attribute" required="true" dataSource="causes">
+                    <caption>Root cause</caption>
+                    <description></description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+                <property key="subCause" type="attribute" required="false" dataSource="causes">
+                    <caption>Sub cause</caption>
+                    <description></description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+                <property key="order" type="attribute" required="false" dataSource="causes">
+                    <caption>Order</caption>
+                    <description></description>
+                    <attributeTypes>
+                        <attributeType name="Integer" />
+                        <attributeType name="Long" />
+                        <attributeType name="Decimal" />
+                        <attributeType name="AutoNumber" />
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Events">
+            <property key="onClickDefect" type="action" required="false">
+                <caption>On click defect</caption>
+                <description></description>
+            </property>
+            <property key="onClickBone" type="action" required="false" dataSource="causes">
+                <caption>On click bone</caption>
+                <description></description>
+            </property>
+
+        </propertyGroup>
+        <propertyGroup caption="Common">
+            <propertyGroup caption="Common">
+                <systemProperty key="Name" />
+                <systemProperty key="TabIndex" />
+            </propertyGroup>
+            <propertyGroup caption="Visibility">
+                <systemProperty key="Visibility" />
+            </propertyGroup>
+        </propertyGroup>
+    </properties>
+</widget>
