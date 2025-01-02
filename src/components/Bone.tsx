@@ -61,7 +61,7 @@ export function Bone(props: BoneProps): ReactElement {
     return (
         <div
             className={classNames(
-                "cause",
+                `cause bone-col-${props.column}`,
                 { top: props.top === true },
                 { bottom: props.top === false },
                 props.bone.dynamicClass
