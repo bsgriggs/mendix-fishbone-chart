@@ -5,42 +5,35 @@
     xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Fishbone Chart</name>
-    <description>My widget description</description>
+    <description>Widget implementation of fishbone idea from https://codepen.io/fukiwi/pen/eYLQGNO</description>
     <icon />
     <properties>
         <propertyGroup caption="General">
-            <propertyGroup caption="Data">
-                <property key="effect" type="textTemplate" required="true">
-                    <caption>Effect</caption>
-                    <description>Text shown as the result of the diagram</description>
-                </property>
+            <propertyGroup caption="Cause">
                 <property key="causes" type="datasource" isList="true" required="true">
                     <caption>Causes</caption>
                     <description>Data source for the bones of the diagram</description>
                 </property>
-                <property key="rootCause" type="attribute" required="true" dataSource="causes">
+                <property key="rootCause" type="expression" required="true" dataSource="causes">
                     <caption>Root cause</caption>
                     <description>String attribute for the branch of the cause</description>
-                    <attributeTypes>
-                        <attributeType name="String" />
-                    </attributeTypes>
+                    <returnType type="String" />
                 </property>
-                <property key="subCause" type="attribute" required="false" dataSource="causes">
+                <property key="subCause" type="expression" required="false" dataSource="causes">
                     <caption>Sub cause</caption>
                     <description>(Optional) String attribute for a sub-description of the cause</description>
-                    <attributeTypes>
-                        <attributeType name="String" />
-                    </attributeTypes>
+                    <returnType type="String" />
                 </property>
-                <property key="order" type="attribute" required="false" dataSource="causes">
+                <property key="order" type="expression" required="false" dataSource="causes">
                     <caption>Order</caption>
                     <description>(Optional) Number attribute that determines which order the causes appear (sorted ascending)</description>
-                    <attributeTypes>
-                        <attributeType name="Integer" />
-                        <attributeType name="Long" />
-                        <attributeType name="Decimal" />
-                        <attributeType name="AutoNumber" />
-                    </attributeTypes>
+                    <returnType type="Decimal" />
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Effect">
+                <property key="effect" type="textTemplate" required="true">
+                    <caption>Effect</caption>
+                    <description>Text shown as the result of the diagram</description>
                 </property>
             </propertyGroup>
             <propertyGroup caption="Customization">

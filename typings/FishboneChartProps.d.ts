@@ -4,7 +4,7 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
-import { ActionValue, DynamicValue, ListValue, ListActionValue, ListAttributeValue, ListExpressionValue } from "mendix";
+import { ActionValue, DynamicValue, ListValue, ListActionValue, ListExpressionValue } from "mendix";
 import { Big } from "big.js";
 
 export interface FishboneChartContainerProps {
@@ -12,11 +12,11 @@ export interface FishboneChartContainerProps {
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    effect: DynamicValue<string>;
     causes: ListValue;
-    rootCause: ListAttributeValue<string>;
-    subCause?: ListAttributeValue<string>;
-    order?: ListAttributeValue<Big>;
+    rootCause: ListExpressionValue<string>;
+    subCause?: ListExpressionValue<string>;
+    order?: ListExpressionValue<Big>;
+    effect: DynamicValue<string>;
     dynamicClass?: ListExpressionValue<string>;
     onClickEffect?: ActionValue;
     onClickCause?: ListActionValue;
@@ -31,11 +31,11 @@ export interface FishboneChartPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
-    effect: string;
     causes: {} | { caption: string } | { type: string } | null;
     rootCause: string;
     subCause: string;
     order: string;
+    effect: string;
     dynamicClass: string;
     onClickEffect: {} | null;
     onClickCause: {} | null;
