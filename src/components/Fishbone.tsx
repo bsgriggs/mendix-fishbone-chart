@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { CSSProperties, ReactElement, createElement, useMemo } from "react";
-import IBone from "../../typings/Bone";
-import { Bone } from "./Bone";
+import ICause from "../../typings/Cause";
+import { Cause } from "./Cause";
 
 export interface FishboneProps {
     name: string;
@@ -9,16 +9,16 @@ export interface FishboneProps {
     style?: CSSProperties;
     tabIndex?: number;
 
-    defect: string | undefined;
+    effect: string | undefined;
 
-    bones: IBone[];
+    causes: ICause[];
 
-    onClickBone?: (bone: IBone) => void;
-    onClickDefect?: () => void;
+    onClickCause?: (cause: ICause) => void;
+    onClickEffect?: () => void;
 }
 
 export function Fishbone(props: FishboneProps): ReactElement {
-    const numberOfColumns = useMemo(() => Math.round(props.bones.length / 2), [props.bones]);
+    const numberOfColumns = useMemo(() => Math.round(props.causes.length / 2), [props.causes]);
 
     return (
         <div
@@ -27,34 +27,34 @@ export function Fishbone(props: FishboneProps): ReactElement {
             style={{ ...props.style, gridTemplateColumns: `repeat(${numberOfColumns}, 1fr) .75fr` }}
             tabIndex={props.tabIndex}
         >
-            <div className="defect" style={{ gridColumn: numberOfColumns + 1 }}>
-                {props.onClickDefect !== undefined ? (
+            <div className="effect" style={{ gridColumn: numberOfColumns + 1 }}>
+                {props.onClickEffect !== undefined ? (
                     <button
-                        className="btn mx-button btn-default btn-block defect-text"
+                        className="btn mx-button btn-default btn-block effect-text"
                         onClick={() => {
-                            if (props.onClickDefect !== undefined) {
-                                props.onClickDefect();
+                            if (props.onClickEffect !== undefined) {
+                                props.onClickEffect();
                             }
                         }}
                         tabIndex={props.tabIndex || 0}
                     >
-                        {props.defect}
+                        {props.effect}
                     </button>
                 ) : (
-                    <div className="defect-text">{props.defect}</div>
+                    <div className="effect-text">{props.effect}</div>
                 )}
             </div>
             <div className="line" style={{ gridColumnStart: 1, gridColumnEnd: numberOfColumns + 2 }} />
 
-            {props.bones
+            {props.causes
                 .sort((a, b) => (a.order || 0) - (b.order || 0))
-                .map((iBone, index) => (
-                    <Bone
-                        key={iBone.obj.id}
-                        bone={iBone}
+                .map((cause, index) => (
+                    <Cause
+                        key={cause.obj.id}
+                        cause={cause}
                         top={index % 2 === 0}
                         column={Math.ceil((numberOfColumns * 2 - index) / 2)}
-                        onClickBone={props.onClickBone}
+                        onClickCause={props.onClickCause}
                     />
                 ))}
         </div>

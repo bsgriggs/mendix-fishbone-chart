@@ -1,8 +1,8 @@
 import { ObjectItem } from "mendix";
-export default interface IBone {
+export default interface ICause {
     obj: ObjectItem;
     rootCause: string;
-    subCauses: IBone[];
+    subCauses: ICause[];
     order?: number;
     dynamicClass?: string;
 }

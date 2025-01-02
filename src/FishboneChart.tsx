@@ -4,16 +4,16 @@ import { ValueStatus } from "mendix";
 import { FishboneChartContainerProps } from "../typings/FishboneChartProps";
 
 import "./ui/FishboneChart.scss";
-import IBone from "../typings/Bone";
+import ICause from "../typings/Cause";
 
 export function FishboneChart(props: FishboneChartContainerProps): ReactElement {
-    const bones: IBone[] = useMemo(() => {
-        const newBones: IBone[] = [];
+    const causes: ICause[] = useMemo(() => {
+        const newCauses: ICause[] = [];
         if (props.causes.status === ValueStatus.Available) {
             props.causes.items?.forEach(objItem => {
                 const iRootCause = props.rootCause.get(objItem).value;
                 const subClause = props.subCause !== undefined ? props.subCause.get(objItem).value : undefined;
-                const existingBone = newBones.find(iBone => iBone.rootCause === iRootCause);
+                const existingBone = newCauses.find(cause => cause.rootCause === iRootCause);
                 if (existingBone) {
                     existingBone.subCauses.push({
                         obj: objItem,
@@ -23,7 +23,7 @@ export function FishboneChart(props: FishboneChartContainerProps): ReactElement 
                         subCauses: []
                     });
                 } else {
-                    newBones.push({
+                    newCauses.push({
                         obj: objItem,
                         rootCause: iRootCause as string,
                         order: props.order ? Number(props.order.get(objItem).value) : undefined,
@@ -43,7 +43,7 @@ export function FishboneChart(props: FishboneChartContainerProps): ReactElement 
                 }
             });
         }
-        return newBones;
+        return newCauses;
     }, [props.causes, props.dynamicClass, props.order, props.rootCause, props.subCause]);
 
     return (
@@ -52,10 +52,12 @@ export function FishboneChart(props: FishboneChartContainerProps): ReactElement 
             tabIndex={props.tabIndex}
             class={props.class}
             style={props.style}
-            bones={bones}
-            defect={props.defect.value}
-            onClickBone={props.onClickBone ? (bone: IBone) => props.onClickBone?.get(bone.obj).execute() : undefined}
-            onClickDefect={props.onClickDefect ? () => props.onClickDefect?.execute() : undefined}
+            causes={causes}
+            effect={props.effect.value}
+            onClickCause={
+                props.onClickCause ? (bone: ICause) => props.onClickCause?.get(bone.obj).execute() : undefined
+            }
+            onClickEffect={props.onClickEffect ? () => props.onClickEffect?.execute() : undefined}
         />
     );
 }

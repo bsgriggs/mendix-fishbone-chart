@@ -12,14 +12,14 @@ export interface FishboneChartContainerProps {
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    defect: DynamicValue<string>;
+    effect: DynamicValue<string>;
     causes: ListValue;
     rootCause: ListAttributeValue<string>;
     subCause?: ListAttributeValue<string>;
     order?: ListAttributeValue<Big>;
     dynamicClass?: ListExpressionValue<string>;
-    onClickDefect?: ActionValue;
-    onClickBone?: ListActionValue;
+    onClickEffect?: ActionValue;
+    onClickCause?: ListActionValue;
 }
 
 export interface FishboneChartPreviewProps {
@@ -31,12 +31,12 @@ export interface FishboneChartPreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
-    defect: string;
+    effect: string;
     causes: {} | { caption: string } | { type: string } | null;
     rootCause: string;
     subCause: string;
     order: string;
     dynamicClass: string;
-    onClickDefect: {} | null;
-    onClickBone: {} | null;
+    onClickEffect: {} | null;
+    onClickCause: {} | null;
 }

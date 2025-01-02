@@ -10,31 +10,31 @@
     <properties>
         <propertyGroup caption="General">
             <propertyGroup caption="Data">
-                <property key="defect" type="textTemplate" required="true">
-                    <caption>Defect</caption>
-                    <description></description>
+                <property key="effect" type="textTemplate" required="true">
+                    <caption>Effect</caption>
+                    <description>Text shown as the result of the diagram</description>
                 </property>
                 <property key="causes" type="datasource" isList="true" required="true">
                     <caption>Causes</caption>
-                    <description></description>
+                    <description>Data source for the bones of the diagram</description>
                 </property>
                 <property key="rootCause" type="attribute" required="true" dataSource="causes">
                     <caption>Root cause</caption>
-                    <description></description>
+                    <description>String attribute for the branch of the cause</description>
                     <attributeTypes>
                         <attributeType name="String" />
                     </attributeTypes>
                 </property>
                 <property key="subCause" type="attribute" required="false" dataSource="causes">
                     <caption>Sub cause</caption>
-                    <description></description>
+                    <description>(Optional) String attribute for a sub-description of the cause</description>
                     <attributeTypes>
                         <attributeType name="String" />
                     </attributeTypes>
                 </property>
                 <property key="order" type="attribute" required="false" dataSource="causes">
                     <caption>Order</caption>
-                    <description></description>
+                    <description>(Optional) Number attribute that determines which order the causes appear (sorted ascending)</description>
                     <attributeTypes>
                         <attributeType name="Integer" />
                         <attributeType name="Long" />
@@ -52,13 +52,13 @@
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Events">
-            <property key="onClickDefect" type="action" required="false">
-                <caption>On click defect</caption>
-                <description></description>
+            <property key="onClickEffect" type="action" required="false">
+                <caption>On click effect</caption>
+                <description>MxAction triggered if the user clicks on the effect text</description>
             </property>
-            <property key="onClickBone" type="action" required="false" dataSource="causes">
-                <caption>On click bone</caption>
-                <description></description>
+            <property key="onClickCause" type="action" required="false" dataSource="causes">
+                <caption>On click cause</caption>
+                <description>MxAction triggered if the user clicks on any cause in the diagram</description>
             </property>
 
         </propertyGroup>
