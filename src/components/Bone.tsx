@@ -18,6 +18,7 @@ export function Bone(props: BoneProps): ReactElement {
                 props.onClickBone(bone);
             }
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [props.onClickBone]
     );
 
@@ -25,16 +26,16 @@ export function Bone(props: BoneProps): ReactElement {
         () =>
             props.onClickBone !== undefined ? (
                 <button
-                    className="btn mx-button btn-primary rootcause"
+                    className={classNames("btn mx-button btn-primary rootcause", props.bone.dynamicClass)}
                     onClick={() => handleOnClickBone(props.bone)}
                     tabIndex={props.tabIndex || 0}
                 >
                     {props.bone.rootCause}
                 </button>
             ) : (
-                <div className="rootcause blue">{props.bone.rootCause}</div>
+                <div className={classNames("rootcause blue", props.bone.dynamicClass)}>{props.bone.rootCause}</div>
             ),
-        [props.bone.rootCause, props.onClickBone, handleOnClickBone]
+        [props.bone, props.onClickBone, handleOnClickBone, props.tabIndex]
     );
 
     const subBones = useMemo(
@@ -44,22 +45,27 @@ export function Bone(props: BoneProps): ReactElement {
                 .map(iBone =>
                     props.onClickBone !== undefined ? (
                         <button
-                            className="btn mx-button btn-default stat"
+                            className={classNames("btn mx-button btn-default stat", props.bone.dynamicClass)}
                             onClick={() => handleOnClickBone(iBone)}
                             tabIndex={props.tabIndex || 0}
                         >
                             {iBone.rootCause}
                         </button>
                     ) : (
-                        <div className="stat">{iBone.rootCause}</div>
+                        <div className={classNames("stat", props.bone.dynamicClass)}>{iBone.rootCause}</div>
                     )
                 ),
-        [props.bone.subCauses, props.onClickBone, handleOnClickBone]
+        [props.bone.subCauses, props.bone.dynamicClass, props.onClickBone, handleOnClickBone, props.tabIndex]
     );
 
     return (
         <div
-            className={classNames("cause", { top: props.top === true }, { bottom: props.top === false })}
+            className={classNames(
+                "cause",
+                { top: props.top === true },
+                { bottom: props.top === false },
+                props.bone.dynamicClass
+            )}
             style={{ gridRow: props.top ? 1 : 3, gridColumn: props.column }}
         >
             {rootCause}

@@ -4,4 +4,5 @@ export default interface IBone {
     rootCause: string;
     subCauses: IBone[];
     order?: number;
+    dynamicClass?: string;
 }

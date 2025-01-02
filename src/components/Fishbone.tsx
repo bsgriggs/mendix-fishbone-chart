@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { CSSProperties, ReactElement, createElement, Fragment, useMemo } from "react";
+import { CSSProperties, ReactElement, createElement, useMemo } from "react";
 import IBone from "../../typings/Bone";
 import { Bone } from "./Bone";
 
@@ -32,7 +32,9 @@ export function Fishbone(props: FishboneProps): ReactElement {
                     <button
                         className="btn mx-button btn-default btn-block defect-text"
                         onClick={() => {
-                            if (props.onClickDefect !== undefined) props.onClickDefect();
+                            if (props.onClickDefect !== undefined) {
+                                props.onClickDefect();
+                            }
                         }}
                         tabIndex={props.tabIndex || 0}
                     >
@@ -42,20 +44,18 @@ export function Fishbone(props: FishboneProps): ReactElement {
                     <div className="defect-text">{props.defect}</div>
                 )}
             </div>
+            <div className="line" style={{ gridColumnStart: 1, gridColumnEnd: numberOfColumns + 2 }} />
+
             {props.bones
                 .sort((a, b) => (a.order || 0) - (b.order || 0))
                 .map((iBone, index) => (
-                    <Fragment>
-                        {index === Math.round(props.bones.length / 2) && (
-                            <div className="line" style={{ gridColumnStart: 1, gridColumnEnd: numberOfColumns + 1 }} />
-                        )}
-                        <Bone
-                            bone={iBone}
-                            top={index % 2 === 0}
-                            column={Math.ceil((numberOfColumns * 2 - index) / 2)}
-                            onClickBone={props.onClickBone}
-                        />
-                    </Fragment>
+                    <Bone
+                        key={iBone.obj.id}
+                        bone={iBone}
+                        top={index % 2 === 0}
+                        column={Math.ceil((numberOfColumns * 2 - index) / 2)}
+                        onClickBone={props.onClickBone}
+                    />
                 ))}
         </div>
     );

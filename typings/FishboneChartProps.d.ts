@@ -4,7 +4,7 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
-import { ActionValue, DynamicValue, ListValue, ListActionValue, ListAttributeValue } from "mendix";
+import { ActionValue, DynamicValue, ListValue, ListActionValue, ListAttributeValue, ListExpressionValue } from "mendix";
 import { Big } from "big.js";
 
 export interface FishboneChartContainerProps {
@@ -17,6 +17,7 @@ export interface FishboneChartContainerProps {
     rootCause: ListAttributeValue<string>;
     subCause?: ListAttributeValue<string>;
     order?: ListAttributeValue<Big>;
+    dynamicClass?: ListExpressionValue<string>;
     onClickDefect?: ActionValue;
     onClickBone?: ListActionValue;
 }
@@ -35,6 +36,7 @@ export interface FishboneChartPreviewProps {
     rootCause: string;
     subCause: string;
     order: string;
+    dynamicClass: string;
     onClickDefect: {} | null;
     onClickBone: {} | null;
 }

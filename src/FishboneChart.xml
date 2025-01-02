@@ -43,6 +43,13 @@
                     </attributeTypes>
                 </property>
             </propertyGroup>
+            <propertyGroup caption="Customization">
+                <property key="dynamicClass" type="expression" required="false" dataSource="causes">
+                    <caption>Dynamic class</caption>
+                    <description></description>
+                    <returnType type="String" />
+                </property>
+            </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Events">
             <property key="onClickDefect" type="action" required="false">

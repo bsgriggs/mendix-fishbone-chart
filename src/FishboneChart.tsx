@@ -19,6 +19,7 @@ export function FishboneChart(props: FishboneChartContainerProps): ReactElement 
                         obj: objItem,
                         rootCause: subClause as string,
                         order: props.order ? Number(props.order.get(objItem).value) : undefined,
+                        dynamicClass: props.dynamicClass?.get(objItem).value,
                         subCauses: []
                     });
                 } else {
@@ -26,6 +27,7 @@ export function FishboneChart(props: FishboneChartContainerProps): ReactElement 
                         obj: objItem,
                         rootCause: iRootCause as string,
                         order: props.order ? Number(props.order.get(objItem).value) : undefined,
+                        dynamicClass: props.dynamicClass?.get(objItem).value,
                         subCauses:
                             subClause !== undefined && subClause.trim() !== ""
                                 ? [
@@ -42,7 +44,7 @@ export function FishboneChart(props: FishboneChartContainerProps): ReactElement 
             });
         }
         return newBones;
-    }, [props.causes]);
+    }, [props.causes, props.dynamicClass, props.order, props.rootCause, props.subCause]);
 
     return (
         <Fishbone
