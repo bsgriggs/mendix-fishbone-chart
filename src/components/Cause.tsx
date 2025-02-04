@@ -45,6 +45,7 @@ export function Cause(props: CauseProps): ReactElement {
                 .map(iCause =>
                     props.onClickCause !== undefined ? (
                         <button
+                            key={iCause.obj.id}
                             className={classNames("btn mx-button btn-default stat", props.cause.dynamicClass)}
                             onClick={() => handleOnClickCause(iCause)}
                             tabIndex={props.tabIndex || 0}
@@ -52,7 +53,9 @@ export function Cause(props: CauseProps): ReactElement {
                             {iCause.rootCause}
                         </button>
                     ) : (
-                        <div className={classNames("stat", props.cause.dynamicClass)}>{iCause.rootCause}</div>
+                        <div key={iCause.obj.id} className={classNames("stat", props.cause.dynamicClass)}>
+                            {iCause.rootCause}
+                        </div>
                     )
                 ),
         [props.cause.subCauses, props.cause.dynamicClass, props.onClickCause, handleOnClickCause, props.tabIndex]
