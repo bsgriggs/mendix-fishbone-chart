@@ -46,19 +46,19 @@ export function Cause(props: CauseProps): ReactElement {
                     props.onClickCause !== undefined ? (
                         <button
                             key={iCause.obj.id}
-                            className={classNames("btn mx-button btn-default stat", props.cause.dynamicClass)}
+                            className={classNames("btn mx-button btn-default stat", iCause.dynamicClass)}
                             onClick={() => handleOnClickCause(iCause)}
                             tabIndex={props.tabIndex || 0}
                         >
                             {iCause.rootCause}
                         </button>
                     ) : (
-                        <div key={iCause.obj.id} className={classNames("stat", props.cause.dynamicClass)}>
+                        <div key={iCause.obj.id} className={classNames("stat", iCause.dynamicClass)}>
                             {iCause.rootCause}
                         </div>
                     )
                 ),
-        [props.cause.subCauses, props.cause.dynamicClass, props.onClickCause, handleOnClickCause, props.tabIndex]
+        [props.cause.subCauses, props.onClickCause, handleOnClickCause, props.tabIndex]
     );
 
     return (
@@ -66,8 +66,7 @@ export function Cause(props: CauseProps): ReactElement {
             className={classNames(
                 `cause cause-col-${props.column}`,
                 { top: props.top === true },
-                { bottom: props.top === false },
-                props.cause.dynamicClass
+                { bottom: props.top === false }
             )}
             style={{ gridRow: props.top ? 1 : 3, gridColumn: props.column }}
         >
